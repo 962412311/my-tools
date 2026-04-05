@@ -6,6 +6,7 @@ APP_BASE_DIR="/userdata"
 APP_FOLDER_NAME="intelligenceCanteenScale"
 APP_NAME="智慧食堂留样秤系统"
 APP_EXEC_NAME="appintelligenceCanteenScale"
+QT_LIB_DIR="/opt/qt6.2.4-aarch64/lib"
 ENABLE_FULLSCREEN=true
 
 APP_DIR="${APP_BASE_DIR%/}/${APP_FOLDER_NAME#/}"
@@ -18,6 +19,12 @@ if [ ! -d "$APP_DIR" ]; then
 fi
 
 cd "$APP_DIR"
+
+if [ -d "$QT_LIB_DIR" ]; then
+    export LD_LIBRARY_PATH="$QT_LIB_DIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+else
+    echo "WARN: Qt library directory not found: $QT_LIB_DIR"
+fi
 
 if [ ! -e "$APP_EXEC" ]; then
     echo "ERROR: App executable not found: $APP_DIR/$APP_EXEC_NAME"
