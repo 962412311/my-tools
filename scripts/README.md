@@ -7,6 +7,11 @@
 - [sysroot/repair_sysroot_paths.py](sysroot/repair_sysroot_paths.py)
   - 修复 sysroot 中泄露的绝对路径、重复前缀，以及常见绝对符号链接问题
 
+## Launcher
+
+- [start.sh](start.sh)
+  - 一键启动应用，可通过脚本内部变量配置应用名称、`/userdata` 下的目录名和是否自动全屏
+
 ## 目录建议
 
 - `scripts/sysroot/`：sysroot、SDK、交叉编译相关修复工具

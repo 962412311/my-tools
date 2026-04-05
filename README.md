@@ -10,6 +10,7 @@
 ## 当前工具
 
 - [scripts/sysroot/repair_sysroot_paths.py](scripts/sysroot/repair_sysroot_paths.py)：修复 sysroot 中泄露的绝对路径、重复前缀，以及常见绝对符号链接问题
+- [scripts/start.sh](scripts/start.sh)：基于脚本内部变量的一键启动器，可配置应用名称、应用目录和是否全屏
 
 ## 使用方式
 
@@ -19,6 +20,7 @@
 python3 scripts/sysroot/repair_sysroot_paths.py --help
 python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary --dry-run
 python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary
+./scripts/start.sh
 ```
 
 ## 维护原则
