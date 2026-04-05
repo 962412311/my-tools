@@ -4,9 +4,9 @@
 
 当前收录：
 
-- `repair_sysroot_paths.py`：修复 sysroot 中泄露的绝对路径、重复前缀，以及常见绝对符号链接问题。
+- `scripts/sysroot/repair_sysroot_paths.py`：修复 sysroot 中泄露的绝对路径、重复前缀，以及常见绝对符号链接问题。
 
-## `repair_sysroot_paths.py`
+## `scripts/sysroot/repair_sysroot_paths.py`
 
 用途：
 
@@ -19,9 +19,9 @@
 示例：
 
 ```bash
-python3 repair_sysroot_paths.py --sysroot /opt/sysroot/binary --dry-run
-python3 repair_sysroot_paths.py --sysroot /opt/sysroot/binary
-python3 repair_sysroot_paths.py --sysroot /opt/sysroot/binary --clean-build /path/to/build
+python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary --dry-run
+python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary
+python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary --clean-build /path/to/build
 ```
 
 参数：
@@ -37,5 +37,10 @@ python3 repair_sysroot_paths.py --sysroot /opt/sysroot/binary --clean-build /pat
 
 ## 目录约定
 
-后续新增工具脚本时，建议继续放在仓库根目录或 `scripts/` 目录下，并在本文件补充对应说明。
+后续新增工具脚本时，建议按能力域分组放在 `scripts/` 下，例如：
 
+- `scripts/sysroot/`
+- `scripts/git/`
+- `scripts/devops/`
+
+新增脚本后，在本文件补充对应说明和示例。
