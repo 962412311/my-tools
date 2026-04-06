@@ -11,6 +11,7 @@
 
 - [scripts/sysroot/repair_sysroot_paths.py](scripts/sysroot/repair_sysroot_paths.py)：修复 sysroot 中泄露的绝对路径、重复前缀，以及常见绝对符号链接问题
 - [scripts/start.sh](scripts/start.sh)：基于脚本内部变量的一键启动器，可配置应用名称、应用目录和是否全屏
+- [scripts/claude/rate_limit_auto_continue/](scripts/claude/rate_limit_auto_continue/README.md)：Claude 限额后自动继续的 hook、后台 worker 和安装说明
 
 ## 使用方式
 
@@ -21,6 +22,7 @@ python3 scripts/sysroot/repair_sysroot_paths.py --help
 python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary --dry-run
 python3 scripts/sysroot/repair_sysroot_paths.py --sysroot /opt/sysroot/binary
 ./scripts/start.sh
+./scripts/claude/rate_limit_auto_continue/install.sh
 ```
 
 ## 维护原则
