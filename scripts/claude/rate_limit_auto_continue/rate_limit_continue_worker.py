@@ -52,9 +52,10 @@ def main() -> int:
 
     script = """set the clipboard to "继续"
 tell application "System Events"
+    delay 0.2
     keystroke "v" using command down
-    delay 0.1
-    key code 36
+    delay 0.6
+    keystroke return
 end tell
 """
     subprocess.run(["osascript"], input=script.encode("utf-8"), check=False)
