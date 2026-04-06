@@ -41,7 +41,8 @@ reason_text="$(extract_field "reason")"
 full_text="$last_msg
 $error_text
 $error_details
-$reason_text"
+$reason_text
+$json_input"
 
 reset_time="$(FULL_TEXT="$full_text" python3 - <<'PY'
 import os
