@@ -18,6 +18,8 @@
   - Claude 触发 `StopFailure` 后自动解析限额重置时间，并在到点后自动输入“继续”并回车
 - [claude/rate_limit_auto_continue/CONTRACT.md](claude/rate_limit_auto_continue/CONTRACT.md)
   - 给后续 Agent 的跨平台实现契约，定义目标、流程、验收标准和平台边界
+- [claude/arm_crosscompile_test/README.md](claude/arm_crosscompile_test/README.md)
+  - 当前项目 ARM 交叉编译、部署和测试 skill 的归档版本，包含本地配置索引
 
 ## 目录建议
 
@@ -26,3 +28,4 @@
 - `scripts/devops/`：部署、同步、维护类脚本
 - `scripts/dev/`：本地开发辅助脚本
 - `scripts/claude/`：Claude hooks、自动化和配套工具
+- `scripts/claude/arm_crosscompile_test/`：当前项目 ARM 交叉编译、部署和测试 skill 归档
