@@ -1,6 +1,6 @@
 ---
 name: arm-crosscompile-test
-description: Use when the user asks to operate this project's fixed ARM cross-compilation and test flow: sync the local source tree to the compile host, build the backend with `onebuild_GOGS_backend_self.sh`, build the frontend locally, deploy artifacts to the ARM Linux test host, and verify the runtime with local HTTP and port checks. Also use when the user mentions `jamin@100.89.114.123`, `root@100.105.175.44`, `/userdata/GOGS`, `gogs-backend.service`, `nginx`, `onebuild_GOGS_backend_self.sh`, `rsync`, or `git push`.
+description: Use when working on this repository's ARM cross-compilation, deployment, or runtime verification flow, especially around `onebuild_GOGS_backend_self.sh`, `/userdata/GOGS`, `gogs-backend.service`, `nginx`, `rsync`, `git push`, or the compile and test hosts.
 ---
 
 # ARM Cross-Compile And Test Orchestrator
