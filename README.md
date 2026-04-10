@@ -13,6 +13,7 @@
 - [scripts/start.sh](scripts/start.sh)：基于脚本内部变量的一键启动器，可配置应用名称、应用目录和是否全屏
 - [scripts/claude/rate_limit_auto_continue/](scripts/claude/rate_limit_auto_continue/README.md)：Claude 限额后自动继续的 hook、后台 worker 和安装说明
 - [scripts/claude/arm_crosscompile_test/](scripts/claude/arm_crosscompile_test/README.md)：当前项目 ARM 交叉编译、部署和测试 skill 归档
+- [scripts/claude/claude_api/](scripts/claude/claude_api/README.md)：Claude API skill 归档，包含 frontmatter 修复后的版本
 
 ## 使用方式
 

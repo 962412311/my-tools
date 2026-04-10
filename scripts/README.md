@@ -20,6 +20,8 @@
   - 给后续 Agent 的跨平台实现契约，定义目标、流程、验收标准和平台边界
 - [claude/arm_crosscompile_test/README.md](claude/arm_crosscompile_test/README.md)
   - 当前项目 ARM 交叉编译、部署和测试 skill 的归档版本，包含本地配置索引
+- [claude/claude_api/README.md](claude/claude_api/README.md)
+  - Claude API skill 归档，包含修正后的 frontmatter 与原始 skill 正文
 
 ## 目录建议
 

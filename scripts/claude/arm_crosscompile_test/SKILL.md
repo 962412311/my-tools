@@ -15,6 +15,8 @@ This skill covers:
 - Building the backend with `onebuild_GOGS_backend_self.sh`
 - Building the frontend locally
 - Deploying backend and frontend artifacts to the test host
+- Downloading repository content and offline assets on the local machine before syncing them to remote hosts
+- Installing required apt packages and directly-installable CLI tools on the target hosts
 - Clearing stale build output and backend logs when needed
 - Verifying the runtime with local HTTP and port checks
 - Pushing changes only at phase boundaries
@@ -30,6 +32,19 @@ This skill does not do the following:
 - Guess build parameters that are not present in the approved script or local config
 - Replace the project's existing deployment scripts with a new generic framework
 
+## Dependency And Environment Setup Rules
+
+Treat environment setup as part of the task, not as an afterthought.
+
+- If a remote host needs code, archives, model files, SDK bundles, or other repository-hosted content, download or prepare them on the local machine first, then sync them to the compile host or test host with `rsync` or direct copy.
+- Do not turn the remote hosts into ad hoc download machines unless the user explicitly requires that path.
+- If a build or verification step depends on apt packages, install them directly with `apt` on the relevant host instead of leaving the environment half-configured.
+- If a required tool can be installed with the system package manager or a direct command-line installer, you may install it automatically when that unblocks the approved workflow.
+- After installing dependencies, record or update the concrete setup steps in the repository-approved environment flow, local notes, or scripts so the environment can be reproduced.
+- Prefer idempotent install commands and verify the tool is available on `PATH` after installation.
+- Keep compile-host dependencies, test-host runtime dependencies, and local-machine dependencies clearly separated.
+- When adding a new dependency, check whether it belongs in the build environment, runtime environment, or both.
+
 ## Local Files
 
 Keep environment-specific values in this directory under:
@@ -43,8 +58,10 @@ Treat `runtime-targets.local.yml` as the source of truth for the compile host, c
 
 - Prefer the simplest command that works.
 - Use `ssh jamin@<ip>`, `rsync`, `git push`, `systemctl status ...`, and direct file copy commands.
+- Download git repositories, release archives, and other remote assets on the local machine first, then sync the prepared content to remote hosts unless the user explicitly wants remote-side cloning.
 - Keep command lines short and explicit.
 - If a command fails, fix the smallest local cause first.
+- If a missing dependency is the local cause, install it in the correct environment and keep the setup flow up to date.
 - If the build or deploy path is unclear, read the approved script instead of inventing a new one.
 - Keep the workflow aligned with the live environment instead of adding compatibility layers.
 
@@ -86,6 +103,8 @@ The onebuild script clears its own build directory before configuring, so no sep
 
 Use the compile host from local config.
 
+If extra repositories, archives, SDK packages, or generated assets are needed for the build, fetch them locally first and sync the resulting directory or package to the compile host. Prefer this over running `git clone` or arbitrary downloads on the remote machine.
+
 Run:
 
 ```bash
@@ -110,6 +129,8 @@ If the onebuild command is unavailable, fall back to the repository's existing n
 ```bash
 ./scripts/build-native-backend.sh backend-linux-release
 ```
+
+If the compile step fails because tools or libraries are missing, install the required apt packages or directly-installable CLI tools on the compile host, then re-run the build. Keep the install sequence explicit so the environment can be rebuilt later.
 
 ### 5. Build frontend locally
 
@@ -166,6 +187,8 @@ Confirm the runtime with:
 
 Treat `gogs-backend.service` as the backend service. Treat `nginx` as the frontend service. If the backend was redeployed, restart `gogs-backend.service` after clearing `/userdata/GOGS/backend/logs`.
 
+If verification needs a missing runtime utility, install it on the test host with the simplest reproducible method, then continue the check.
+
 ### 9. Commit and push when needed
 
 If the task changed repository files and the user wants the changes published:
@@ -194,6 +217,7 @@ If the script does not clearly expose the needed values, fall back to the reposi
 ## Error Handling
 
 - If SSH fails, check host key setup and key auth first.
+- If a remote step would require `git clone` or downloading release assets, prefer doing that work locally and syncing the result unless the user explicitly asks for remote-side downloads.
 - If backend deployment succeeds but the service is down, check `gogs-backend.service` first, then logs, then the runtime directory.
 - If nginx is up but the frontend is wrong, inspect the deployed `dist` content and the nginx document root.
 - If the test environment differs from the local config, update the local config instead of scattering ad-hoc exceptions through the skill.
