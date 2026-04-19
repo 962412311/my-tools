@@ -1,0 +1,80 @@
+# 称重协议验收预填草稿
+
+- 自动生成于：2026-04-19T08:58:25+08:00
+- 目标机：100.105.175.44
+- 自动化脚本结果：[FAIL] verify_scale_protocol: scale protocol verification failed log: /mnt/d/QtWorkData/GOGS/logs/arm/20260419-085811-verify-scale-protocol.log Traceback (most recent call last): File "<stdin>", line 102, in <module> RuntimeError: scale devices are not configured on target host (ui/scale_devices is empty)
+- 当前阻塞：ui/scale_devices empty
+- 推荐命令：rtk bash scripts/arm/verify_scale_protocol.sh
+- 可选期望映射：SCALE_VERIFY_EXPECTED_SPEC='{"devices":[...]}'
+- 阶段日志：/mnt/d/QtWorkData/GOGS/logs/arm/20260419-085804-scale.workpack-stage.log
+- 详情日志：/mnt/d/QtWorkData/GOGS/logs/arm/20260419-085811-verify-scale-protocol.log
+
+填写建议：先把设备手册映射整理成 JSON，再做现场三点实称、心跳节奏和异常码回写。
+
+---
+
+# 称重设备协议验收记录模板
+
+当前现场实际填写优先落到 [`DOC/当前现场验收包/称重设备协议验收记录.md`](当前现场验收包/称重设备协议验收记录.md)。
+
+## 基本信息
+
+- 日期：
+- 现场：
+- 目标机：
+- 后端版本：
+- 设备厂家/型号：
+- 协议版本：
+- 记录人：
+
+## 一、设备与通讯基线
+
+| 设备 ID | 设备名称 | 通讯方式 | slaveId | 地址/串口 | 协议 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 待填写 | 待填写 | 待填写 | 待填写 | Modbus | |
+
+## 二、寄存器映射核对
+
+| 设备 ID | registerArea | registerAddress | registerCount | valueType | wordOrder | scaleFactor | pollIntervalMs | 设备手册是否一致 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+
+## 三、脚本验收结果
+
+- `rtk bash scripts/arm/verify_scale_protocol.sh` 结果：
+- 是否使用 `SCALE_VERIFY_EXPECTED_SPEC`：
+- `driverStatus / driverMessage`：
+- `onlineDeviceCount / enabledDeviceCount / totalDeviceCount`：
+- `sampleTime` 是否持续推进：
+- `lastError`：
+- 备注：
+
+## 四、样本称重点核对
+
+| 设备 ID | 样本称重点 | 标准重量 | 设备显示值 | 后端 currentWeight | 绝对误差 | 相对误差 | 是否通过 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 空载/零点 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| 1 | 中间载荷 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| 1 | 接近上限 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+
+## 五、采样周期与心跳
+
+| 设备 ID | 目标采样周期 | 实测采样周期 | 心跳寄存器/状态字 | 超时判定 | 现场结论 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+
+## 六、异常码与业务语义
+
+| 原始异常码/状态值 | 设备原始语义 | 当前系统语义 | 是否已有系统留痕 | 处理建议 | 备注 |
+| --- | --- | --- | --- | --- | --- |
+| 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+
+## 七、结论
+
+- 本轮是否通过：
+- 未通过项：
+- 需要修改的配置键：
+- 需要补充的异常码：
+- 是否需要后续代码接入：
+- 需要回写的 `todo.md` 项：
+- 需要同步的文档：

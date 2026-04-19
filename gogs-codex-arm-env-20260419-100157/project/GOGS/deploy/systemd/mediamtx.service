@@ -1,0 +1,17 @@
+[Unit]
+Description=MediaMTX Streaming Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__RUN_USER__
+Group=__RUN_USER__
+WorkingDirectory=/userdata/GOGS/backend
+ExecStart=/usr/local/bin/mediamtx /userdata/GOGS/backend/config/mediamtx.yml
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

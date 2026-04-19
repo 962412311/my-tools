@@ -1,0 +1,60 @@
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+[projects."/home/parsifal/QtWorkData/3DLaserDigitSystem/main"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/3DLaserDigitSystem/main"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/GOGS"]
+trust_level = "trusted"
+
+[projects."/home/parsifal"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/MyTools"]
+trust_level = "trusted"
+
+[projects."/mnt/c/Users/96241"]
+trust_level = "trusted"
+
+[projects."/home/parsifal/QtWorkData"]
+trust_level = "trusted"
+
+[projects."/home/parsifal/QtWorkData/GrabInventorySystem"]
+trust_level = "trusted"
+
+[projects."/mnt/c/Users/96241/Desktop/agent-template"]
+trust_level = "trusted"
+
+[projects."/tmp"]
+trust_level = "trusted"
+
+[projects."/mnt/d/qtworkdata/gogs"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/IntelligentInventoryMngSys"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/MyTailscale"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/Quantitative"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/LidarVolumeForBelt_shunpeng"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData/intelligenceCanteenScale"]
+trust_level = "trusted"
+
+[projects."/mnt/d/QtWorkData"]
+trust_level = "trusted"
+
+[notice]
+hide_rate_limit_model_nudge = true
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"

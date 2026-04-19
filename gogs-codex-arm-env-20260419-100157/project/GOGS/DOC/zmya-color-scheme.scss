@@ -1,0 +1,682 @@
+// ZMYA 项目配色方案
+// 智眸优安 - 智慧食堂综合管理系统
+
+// ==================== 主色调 ====================
+$primary-color: #667eea;
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$primary-hover: #5a67d8;
+
+// 功能色
+$success-color: #10b981;
+$success-hover: #059669;
+
+$warning-color: #f59e0b;
+$warning-hover: #d97706;
+
+$danger-color: #ef4444;
+$danger-hover: #dc2626;
+
+$info-color: #3b82f6;
+
+// ==================== 状态标签配色 ====================
+$status-pending-bg: #fef3c7;
+$status-pending-text: #92400e;
+
+$status-approved-bg: #d1fae5;
+$status-approved-text: #065f46;
+
+$status-rejected-bg: #fee2e2;
+$status-rejected-text: #991b1b;
+
+$status-processing-bg: #dbeafe;
+$status-processing-text: #1e40af;
+
+$status-active-bg: #d1fae5;
+$status-active-text: #065f46;
+
+$status-inactive-bg: #e5e7eb;
+$status-inactive-text: #6b7280;
+
+// ==================== 警告/提示配色 ====================
+$alert-warning-bg: #fef3c7;
+$alert-warning-text: #92400e;
+$alert-warning-border: #fbbf24;
+
+$alert-danger-bg: #fee2e2;
+$alert-danger-text: #991b1b;
+$alert-danger-border: #f87171;
+
+$alert-info-bg: #dbeafe;
+$alert-info-text: #1e40af;
+$alert-info-border: #60a5fa;
+
+$alert-success-bg: #d1fae5;
+$alert-success-text: #065f46;
+$alert-success-border: #34d399;
+
+// ==================== 文字颜色 ====================
+$text-primary: #303133;
+$text-regular: #606266;
+$text-secondary: #909399;
+$text-placeholder: #C0C4CC;
+$text-body: #333;
+
+// ==================== 边框颜色 ====================
+$border-base: #DCDFE6;
+$border-light: #E4E7ED;
+$border-lighter: #EBEEF5;
+$border-extra-light: #F2F6FC;
+$border-outline: #cbd5e1;
+
+// ==================== 背景颜色 ====================
+$bg-page: #f5f7fa;
+$bg-white: #FFFFFF;
+$bg-table-header: #f9fafb;
+$bg-table-hover: #f9fafb;
+$bg-button-hover: #f1f5f9;
+$bg-scrollbar-track: #f1f1f1;
+$bg-scrollbar-thumb: #c1c1c1;
+$bg-scrollbar-thumb-hover: #a8a8a8;
+
+// ==================== 侧边栏配色 ====================
+$sidebar-bg: #304156;
+$sidebar-text: #bfcbd9;
+$sidebar-active: #409EFF;
+
+// ==================== 深色主题配色 ====================
+$dark-text-primary: #E0E0E0;
+$dark-text-regular: #B0B0B0;
+$dark-text-secondary: #808080;
+$dark-bg-base: #1a1a1a;
+$dark-bg-white: #2d2d2d;
+$dark-border-base: #444;
+$dark-border-light: #3a3a3a;
+
+// ==================== 布局尺寸 ====================
+$sidebar-width: 260px;
+$top-bar-height: 60px;
+
+// ==================== 间距 ====================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// ==================== CSS 变量定义 ====================
+:root {
+  // 主色调
+  --primary-color: #{$primary-color};
+  --primary-gradient: #{$primary-gradient};
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --danger-color: #{$danger-color};
+  --info-color: #{$info-color};
+  
+  // 布局尺寸
+  --sidebar-width: #{$sidebar-width};
+  --top-bar-height: #{$top-bar-height};
+  
+  // 间距
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+}
+
+// ==================== 常用混合宏 (Mixins) ====================
+
+// 主按钮样式
+@mixin btn-primary {
+  background: $primary-color;
+  color: white;
+  
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+// 成功按钮样式
+@mixin btn-success {
+  background: $success-color;
+  color: white;
+  
+  &:hover {
+    background: $success-hover;
+  }
+}
+
+// 警告按钮样式
+@mixin btn-warning {
+  background: $warning-color;
+  color: white;
+  
+  &:hover {
+    background: $warning-hover;
+  }
+}
+
+// 危险按钮样式
+@mixin btn-danger {
+  background: $danger-color;
+  color: white;
+  
+  &:hover {
+    background: $danger-hover;
+  }
+}
+
+// 状态标签基础样式
+@mixin status-badge($bg-color, $text-color) {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: $bg-color;
+  color: $text-color;
+}
+
+// 卡片样式
+@mixin card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// 警告提示样式
+@mixin alert($bg-color, $text-color, $border-color) {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: $bg-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+}
+
+// ==================== 使用示例 ====================
+
+// .btn-primary {
+//   @include btn-primary;
+// }
+
+// .status-pending {
+//   @include status-badge($status-pending-bg, $status-pending-text);
+// }
+
+// .card {
+//   @include card;
+// }
+
+// .alert-warning {
+//   @include alert($alert-warning-bg, $alert-warning-text, $alert-warning-border);
+// }
+
+// ==================== 工业蓝主题配色 ====================
+// 适用于工业控制、料场管理系统
+
+// 工业蓝 - 主色调
+$industrial-primary: #1e3a8a;
+$industrial-primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+$industrial-primary-hover: #1e40af;
+$industrial-primary-light: #dbeafe;
+
+// 工业蓝 - 功能色
+$industrial-success: #059669;
+$industrial-success-hover: #047857;
+
+$industrial-warning: #d97706;
+$industrial-warning-hover: #b45309;
+
+$industrial-danger: #dc2626;
+$industrial-danger-hover: #b91c1c;
+
+$industrial-info: #2563eb;
+
+// 工业蓝 - 状态标签配色
+$industrial-status-running-bg: #dbeafe;
+$industrial-status-running-text: #1e40af;
+
+$industrial-status-normal-bg: #d1fae5;
+$industrial-status-normal-text: #065f46;
+
+$industrial-status-alarm-bg: #fef3c7;
+$industrial-status-alarm-text: #92400e;
+
+$industrial-status-fault-bg: #fee2e2;
+$industrial-status-fault-text: #991b1b;
+
+$industrial-status-standby-bg: #e0e7ff;
+$industrial-status-standby-text: #3730a3;
+
+$industrial-status-offline-bg: #f3f4f6;
+$industrial-status-offline-text: #6b7280;
+
+// 工业蓝 - 文字颜色
+$industrial-text-primary: #1f2937;
+$industrial-text-regular: #4b5563;
+$industrial-text-secondary: #6b7280;
+$industrial-text-placeholder: #9ca3af;
+$industrial-text-body: #374151;
+
+// 工业蓝 - 背景颜色
+$industrial-bg-page: #f8fafc;
+$industrial-bg-white: #ffffff;
+$industrial-bg-table-header: #f1f5f9;
+$industrial-bg-table-hover: #e2e8f0;
+$industrial-bg-sidebar: #0f172a;
+$industrial-bg-sidebar-text: #cbd5e1;
+$industrial-bg-sidebar-active: #3b82f6;
+
+// 工业蓝 - 边框颜色
+$industrial-border-base: #d1d5db;
+$industrial-border-light: #e5e7eb;
+$industrial-border-lighter: #f3f4f6;
+
+// ==================== 主题切换变量 ====================
+// 通过修改 $current-theme 变量切换主题
+
+$current-theme: 'default' !default;  // 'default' 或 'industrial'
+
+// 主题映射
+$theme-primary: if($current-theme == 'industrial', $industrial-primary, $primary-color);
+$theme-primary-gradient: if($current-theme == 'industrial', $industrial-primary-gradient, $primary-gradient);
+$theme-primary-hover: if($current-theme == 'industrial', $industrial-primary-hover, $primary-hover);
+
+$theme-success: if($current-theme == 'industrial', $industrial-success, $success-color);
+$theme-success-hover: if($current-theme == 'industrial', $industrial-success-hover, $success-hover);
+
+$theme-warning: if($current-theme == 'industrial', $industrial-warning, $warning-color);
+$theme-warning-hover: if($current-theme == 'industrial', $industrial-warning-hover, $warning-hover);
+
+$theme-danger: if($current-theme == 'industrial', $industrial-danger, $danger-color);
+$theme-danger-hover: if($current-theme == 'industrial', $industrial-danger-hover, $danger-hover);
+
+$theme-info: if($current-theme == 'industrial', $industrial-info, $info-color);
+
+$theme-text-primary: if($current-theme == 'industrial', $industrial-text-primary, $text-primary);
+$theme-text-regular: if($current-theme == 'industrial', $industrial-text-regular, $text-regular);
+$theme-text-secondary: if($current-theme == 'industrial', $industrial-text-secondary, $text-secondary);
+
+$theme-bg-page: if($current-theme == 'industrial', $industrial-bg-page, $bg-page);
+$theme-bg-sidebar: if($current-theme == 'industrial', $industrial-bg-sidebar, $sidebar-bg);
+
+// ==================== 工业蓝主题混合宏 ====================
+
+// 工业蓝主按钮样式
+@mixin btn-industrial-primary {
+  background: $industrial-primary;
+  color: white;
+  font-weight: 500;
+  border: none;
+  
+  &:hover {
+    background: $industrial-primary-hover;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
+  }
+  
+  &:active {
+    background: #1e3a8a;
+  }
+}
+
+// 工业蓝状态标签
+@mixin industrial-status-badge($bg-color, $text-color) {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background: $bg-color;
+  color: $text-color;
+  border: 1px solid rgba($text-color, 0.2);
+}
+
+// 工业蓝卡片样式
+@mixin industrial-card {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  border: 1px solid $industrial-border-light;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: $industrial-border-base;
+  }
+}
+
+// 工业蓝侧边栏样式
+@mixin industrial-sidebar {
+  background: $industrial-bg-sidebar;
+  color: $industrial-bg-sidebar-text;
+  
+  .menu-item {
+    color: $industrial-bg-sidebar-text;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    &.active {
+      background: $industrial-bg-sidebar-active;
+      color: white;
+    }
+  }
+}
+
+// 工业蓝表格样式
+@mixin industrial-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th {
+    background: $industrial-bg-table-header;
+    color: $industrial-text-primary;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid $industrial-border-base;
+  }
+  
+  td {
+    padding: 12px;
+    border-bottom: 1px solid $industrial-border-light;
+    color: $industrial-text-regular;
+  }
+  
+  tr:hover td {
+    background: $industrial-bg-table-hover;
+  }
+}
+
+// 工业蓝输入框样式
+@mixin industrial-input {
+  border: 1px solid $industrial-border-base;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: $industrial-text-primary;
+  background: white;
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: $industrial-primary;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  }
+  
+  &::placeholder {
+    color: $industrial-text-placeholder;
+  }
+}
+
+// ==================== 工业蓝主题CSS变量 ====================
+// 用于动态主题切换
+
+:root {
+  // 默认主题变量
+  --theme-primary: #{$primary-color};
+  --theme-primary-gradient: #{$primary-gradient};
+  --theme-primary-hover: #{$primary-hover};
+  --theme-success: #{$success-color};
+  --theme-warning: #{$warning-color};
+  --theme-danger: #{$danger-color};
+  --theme-info: #{$info-color};
+  --theme-text-primary: #{$text-primary};
+  --theme-bg-page: #{$bg-page};
+  --theme-bg-sidebar: #{$sidebar-bg};
+}
+
+// 工业蓝主题类
+.theme-industrial {
+  --theme-primary: #{$industrial-primary};
+  --theme-primary-gradient: #{$industrial-primary-gradient};
+  --theme-primary-hover: #{$industrial-primary-hover};
+  --theme-success: #{$industrial-success};
+  --theme-warning: #{$industrial-warning};
+  --theme-danger: #{$industrial-danger};
+  --theme-info: #{$industrial-info};
+  --theme-text-primary: #{$industrial-text-primary};
+  --theme-bg-page: #{$industrial-bg-page};
+  --theme-bg-sidebar: #{$industrial-bg-sidebar};
+}
+
+// ==================== 使用示例 ====================
+
+// 默认主题按钮
+// .btn-primary {
+//   @include btn-primary;
+// }
+
+// 工业蓝主题按钮
+// .btn-industrial {
+//   @include btn-industrial-primary;
+// }
+
+// 工业蓝状态标签
+// .status-running {
+//   @include industrial-status-badge($industrial-status-running-bg, $industrial-status-running-text);
+// }
+
+// 工业蓝卡片
+// .industrial-card {
+//   @include industrial-card;
+// }
+
+// 工业蓝表格
+// .industrial-table {
+//   @include industrial-table;
+// }
+
+// ==================== 暗黑模式配色 ====================
+// 适用于夜间操作、控制室、监控中心
+
+// 暗黑模式 - 主色调
+$dark-primary: #3b82f6;
+$dark-primary-hover: #60a5fa;
+$dark-primary-light: #1e3a8a;
+
+// 暗黑模式 - 功能色
+$dark-success: #10b981;
+$dark-success-hover: #34d399;
+
+$dark-warning: #f59e0b;
+$dark-warning-hover: #fbbf24;
+
+$dark-danger: #ef4444;
+$dark-danger-hover: #f87171;
+
+$dark-info: #60a5fa;
+
+// 暗黑模式 - 背景颜色
+$dark-bg-page: #0f172a;
+$dark-bg-card: #1e293b;
+$dark-bg-elevated: #334155;
+$dark-bg-sidebar: #020617;
+$dark-bg-sidebar-text: #94a3b8;
+$dark-bg-sidebar-active: #3b82f6;
+
+// 暗黑模式 - 文字颜色
+$dark-text-primary: #f1f5f9;
+$dark-text-regular: #cbd5e1;
+$dark-text-secondary: #94a3b8;
+$dark-text-placeholder: #64748b;
+$dark-text-disabled: #475569;
+
+// 暗黑模式 - 边框颜色
+$dark-border-base: #334155;
+$dark-border-light: #1e293b;
+$dark-border-lighter: #0f172a;
+
+// ==================== 暗黑模式混合宏 ====================
+
+// 暗黑模式按钮样式
+@mixin btn-dark-primary {
+  background: $dark-primary;
+  color: white;
+  font-weight: 500;
+  border: none;
+  
+  &:hover {
+    background: $dark-primary-hover;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  }
+}
+
+// 暗黑模式卡片样式
+@mixin dark-card {
+  background: $dark-bg-card;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid $dark-border-base;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-color: $dark-border-light;
+  }
+}
+
+// 暗黑模式输入框样式
+@mixin dark-input {
+  background: $dark-bg-page;
+  border: 1px solid $dark-border-base;
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: $dark-text-primary;
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: $dark-primary;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  &::placeholder {
+    color: $dark-text-placeholder;
+  }
+}
+
+// 暗黑模式表格样式
+@mixin dark-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th {
+    background: $dark-bg-card;
+    color: $dark-text-primary;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid $dark-border-base;
+  }
+  
+  td {
+    padding: 12px;
+    border-bottom: 1px solid $dark-border-base;
+    color: $dark-text-regular;
+  }
+  
+  tr:hover td {
+    background: $dark-bg-elevated;
+  }
+}
+
+// 暗黑模式侧边栏样式
+@mixin dark-sidebar {
+  background: $dark-bg-sidebar;
+  color: $dark-bg-sidebar-text;
+  
+  .menu-item {
+    color: $dark-bg-sidebar-text;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    &.active {
+      background: $dark-bg-sidebar-active;
+      color: white;
+    }
+  }
+}
+
+// ==================== 暗黑模式CSS变量 ====================
+
+.theme-dark {
+  --theme-primary: #{$dark-primary};
+  --theme-primary-hover: #{$dark-primary-hover};
+  --theme-success: #{$dark-success};
+  --theme-warning: #{$dark-warning};
+  --theme-danger: #{$dark-danger};
+  --theme-info: #{$dark-info};
+  --theme-text-primary: #{$dark-text-primary};
+  --theme-text-regular: #{$dark-text-regular};
+  --theme-bg-page: #{$dark-bg-page};
+  --theme-bg-card: #{$dark-bg-card};
+  --theme-bg-sidebar: #{$dark-bg-sidebar};
+  --theme-border-base: #{$dark-border-base};
+  
+  // 覆盖Element Plus暗黑模式变量
+  --el-bg-color: #{$dark-bg-page};
+  --el-bg-color-page: #{$dark-bg-page};
+  --el-bg-color-overlay: #{$dark-bg-card};
+  --el-text-color-primary: #{$dark-text-primary};
+  --el-text-color-regular: #{$dark-text-regular};
+  --el-text-color-secondary: #{$dark-text-secondary};
+  --el-text-color-placeholder: #{$dark-text-placeholder};
+  --el-border-color: #{$dark-border-base};
+  --el-border-color-light: #{$dark-border-light};
+  --el-border-color-lighter: #{$dark-border-lighter};
+  --el-fill-color: #{$dark-bg-card};
+  --el-fill-color-light: #{$dark-bg-elevated};
+  --el-fill-color-lighter: #{$dark-bg-page};
+}
+
+// ==================== 主题切换工具类 ====================
+
+// 自动适配主题的文本颜色
+.theme-adaptive-text {
+  color: var(--theme-text-primary);
+}
+
+.theme-adaptive-text-secondary {
+  color: var(--theme-text-regular);
+}
+
+// 自动适配主题的背景
+.theme-adaptive-bg {
+  background: var(--theme-bg-page);
+}
+
+.theme-adaptive-card {
+  background: var(--theme-bg-card, white);
+  border: 1px solid var(--theme-border-base, #DCDFE6);
+}
+
+// ==================== 使用示例 ====================
+
+// 暗黑模式按钮
+// .btn-dark {
+//   @include btn-dark-primary;
+// }
+
+// 暗黑模式卡片
+// .dark-card {
+//   @include dark-card;
+// }
+
+// 暗黑模式表格
+// .dark-table {
+//   @include dark-table;
+// }

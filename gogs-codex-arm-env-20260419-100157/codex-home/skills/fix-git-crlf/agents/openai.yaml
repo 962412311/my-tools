@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fix Git CRLF"
+  short_description: "Repair CRLF line endings in Git worktrees"
+  default_prompt: "Use $fix-git-crlf to repair CRLF warnings in the current Git path."

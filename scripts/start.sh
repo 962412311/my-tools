@@ -3,11 +3,11 @@ set -euo pipefail
 
 # 配置区：只改这里即可复用到其他应用
 APP_BASE_DIR="/userdata"
-APP_FOLDER_NAME="intelligenceCanteenScale"
-APP_NAME="智慧食堂留样秤系统"
-APP_EXEC_NAME="appintelligenceCanteenScale"
+APP_FOLDER_NAME="GOGS/backend"
+APP_NAME="抓斗作业引导及盘存系统-后端子系统"
+APP_EXEC_NAME="GrabSystem"
 QT_LIB_DIR="/opt/qt6.2.4-aarch64/lib"
-ENABLE_FULLSCREEN=true
+ENABLE_FULLSCREEN=false
 
 APP_DIR="${APP_BASE_DIR%/}/${APP_FOLDER_NAME#/}"
 APP_TITLE="$APP_NAME"

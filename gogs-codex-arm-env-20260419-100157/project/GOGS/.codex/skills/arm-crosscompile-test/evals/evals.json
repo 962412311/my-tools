@@ -1,0 +1,38 @@
+{
+  "skill_name": "arm-crosscompile-test",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the project's fixed ARM cross-compilation workflow to connect to the compile host, pull the latest code, build the backend, and report the backend artifact path and any deployment notes.",
+      "expected_output": "The response follows the repository's compile-host workflow, uses the simple SSH/git commands, and reports the backend build artifact and deployment notes.",
+      "files": [],
+      "expectations": [
+        "The workflow uses the compile host from local config.",
+        "The workflow includes `git pull` before the backend build.",
+        "The output identifies the backend artifact path or name."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "An approved build script sets SOURCE_DIR, BUILD_DIR, INSTALL_DIR, and TARGET. Extract the usable paths from the script and explain how they should be applied to the repository's build-and-deploy flow.",
+      "expected_output": "The response reads the script variables directly, extracts the build paths and target, and explains how they feed the fixed compile/deploy workflow.",
+      "files": [],
+      "expectations": [
+        "The response prefers explicit script variables over guesswork.",
+        "The response mentions the extracted source/build/install/target values.",
+        "The response avoids introducing unnecessary compatibility layers."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use the project's normal flow to build the frontend locally, deploy it to the ARM Linux test host, and verify grab-system.service and nginx with simple status checks.",
+      "expected_output": "The response builds the frontend locally, deploys it to the test host's runtime path, and verifies the backend and frontend services with straightforward systemctl checks.",
+      "files": [],
+      "expectations": [
+        "The response builds the frontend locally before deployment.",
+        "The response checks `grab-system.service` and `nginx` on the test host.",
+        "The response keeps the commands simple and direct."
+      ]
+    }
+  ]
+}

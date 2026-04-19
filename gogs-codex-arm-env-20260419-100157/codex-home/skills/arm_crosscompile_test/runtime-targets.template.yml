@@ -1,0 +1,75 @@
+compile_host:
+  user: jamin
+  host: 100.89.114.123
+  port: 22
+
+test_host:
+  user: root
+  host: 100.105.175.44
+  port: 22
+
+repository:
+  name: GrabInventorySystem
+  default_branch: main
+  compile_root: /home/jamin/qt/GrabInventorySystem
+  approved_build_command: onebuild_GOGS_backend_self.sh
+  deployment_transport: rsync
+  push_policy: stage_milestones_only
+
+lookup_index:
+  compile_host: compile_host
+  compile_root: compile_root
+  sync: source_sync_target
+  build: approved_build_command
+  build_dir: build_dir
+  sysroot: sysroot
+  qt: qt_cmake
+  target: target
+  backend: backend_bin
+  backend_workdir: backend_workdir
+  config: backend_config
+  logs: backend_logs_dir
+  log_file: backend_log_file
+  frontend: frontend_dist
+  web: backend_web
+  restart: backend_restart_command
+  service: backend_service
+  nginx: frontend_service
+  health: backend_health_url
+  port: backend_port
+  ws: websocket_port
+  deploy: deployment_transport
+  push: push_policy
+
+runtime:
+  root: /userdata/GOGS
+  backend_service: gogs-backend.service
+  frontend_service: nginx
+  backend_bin: /userdata/GOGS/backend/GrabSystem
+  backend_workdir: /userdata/GOGS/backend
+  backend_config: /userdata/GOGS/backend/config/config.ini
+  backend_logs_dir: /userdata/GOGS/backend/logs
+  backend_log_file: /userdata/GOGS/backend/logs/grab_system.log
+  frontend_dist: /userdata/GOGS/frontend/dist
+  backend_web: /userdata/GOGS/backend/web
+  backend_restart_command: systemctl restart gogs-backend.service
+
+checks:
+  backend_health_url: http://127.0.0.1:8080/api/system/info
+  websocket_port: 12345
+  backend_port: 8080
+
+approved_script:
+  path: /usr/local/bin/onebuild_GOGS_backend_self.sh
+  source_dir: /home/jamin/qt/GrabInventorySystem/backend
+  build_dir: /home/jamin/qt/GrabInventorySystem_backend/build/arm-gcc
+  sysroot: /opt/sysroot/binary
+  qt_cmake: /opt/qt6.2.4-aarch64/bin/qt-cmake
+  target: GrabSystem
+
+notes:
+  - "Compile host SSH login is verified from this workstation."
+  - "Test host SSH login is verified from this workstation."
+  - "Backend is service-managed through gogs-backend.service."
+  - "Frontend is built locally and synced only to the test host."
+  - "Nginx serves /userdata/GOGS/frontend/dist and proxies /api/ and /ws to localhost."

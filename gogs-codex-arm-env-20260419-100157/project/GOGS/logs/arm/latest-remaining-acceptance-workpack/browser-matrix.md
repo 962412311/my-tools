@@ -1,0 +1,97 @@
+# 浏览器实机矩阵预填草稿
+
+- 自动生成于：2026-04-19T08:58:25+08:00
+- 目标机：100.105.175.44
+- 自动化准备结果：[PASS] verify_browser_matrix_readiness: stream='path=camera api=1 hls=1 webrtc=1 sync=1 lastError=none' self_check='ok:视频链路自检通过 items=stream:ok,recording:ok,ptz:ok,snapshot:ok' recording='healthy:录像链路就绪 input=h264' baseline='main=2k/20/auto sub=720p/15/h264 record=h264' urls='monitor=http://100.105.175.44/monitor hls=http://100.105.175.44/media/hls/camera/index.m3u8 webrtc=http://100.105.175.44/media/webrtc/camera/'
+- stream-info 摘要：path=camera api=1 hls=1 webrtc=1 sync=1 lastError=none
+- self-check 摘要：ok:视频链路自检通过 items=stream:ok,recording:ok,ptz:ok,snapshot:ok
+- recording 摘要：healthy:录像链路就绪 input=h264
+- 主码流基线：2k/20/auto
+- 子码流基线：720p/15/h264
+- 录像输入编码：h264
+- Monitor 地址：http://100.105.175.44/monitor
+- HLS 地址：http://100.105.175.44/media/hls/camera/index.m3u8
+- WebRTC Player 地址：http://100.105.175.44/media/webrtc/camera/
+- WebRTC WHEP 地址：http://100.105.175.44/media/webrtc/camera/whep
+- 矩阵模板来源：DOC/视频实机验收矩阵模板.md
+- 版本化验收清单：DOC/V1.1视频链路版本化验收清单.md
+- 日志：/mnt/d/QtWorkData/GOGS/logs/arm/20260419-085804-browser.workpack-stage.log
+- 详情日志：/mnt/d/QtWorkData/GOGS/logs/arm/20260419-085804-verify-browser-matrix-readiness.log
+
+填写要求：必须在有显示输出的真实终端上填写，不能用 headless 浏览器替代画面结论。
+
+---
+
+# 视频实机验收矩阵模板
+
+这份模板只用于真实摄像头现场回写，不用于替代项目级兼容建议。
+
+适用范围：
+
+- 海康摄像机真实视频源
+- 固定现场浏览器与目标机
+- 当前项目默认链路：`WebRTC/WHEP` 优先，`HLS` 降级
+
+回写要求：
+
+- 每次实机联调至少回写一行，不要只写“已测通过”
+- 如果结论与 [`视频浏览器兼容矩阵`](视频浏览器兼容矩阵.md) 不一致，优先以实机结果为准
+- 现场实际填写优先落到 [`DOC/当前现场验收包/视频实机验收矩阵.md`](当前现场验收包/视频实机验收矩阵.md)
+- 实机回写后，同步更新 `todo.md`、`DOC/现场联调验收README.md` 和 `DOC/当前现场验收包/现场联调验收记录.md`
+
+## 一、基础信息
+
+- 日期：
+- 现场：
+- 摄像机型号：
+- 浏览器：
+- 浏览器版本：
+- 目标机：
+- 主码流：
+- 子码流：
+- 主码流编码：
+- 子码流编码：
+- 主码流分辨率：
+- 子码流分辨率：
+- 主码流帧率：
+- 子码流帧率：
+
+## 二、实机验收矩阵
+
+| 浏览器/终端 | 预览协议 | 预览码流 | 编码 | 实时画面 | 延迟表现 | 截图 | 录像 | 回放 | 最终结论 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Chrome | WebRTC | 子码流 | H.264 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Chrome | WebRTC | 子码流 | H.265 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Chrome | HLS | 子码流 | H.264 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Edge | WebRTC | 子码流 | H.264 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Edge | WebRTC | 子码流 | H.265 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Safari | WebRTC | 子码流 | H.264 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Safari | WebRTC | 子码流 | H.265 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Firefox | WebRTC | 子码流 | H.264 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+| Firefox | WebRTC | 子码流 | H.265 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 | |
+
+填写建议：
+
+- `实时画面`：填写 `稳定 / 可用但抖动 / 黑屏 / 无法播放`
+- `延迟表现`：填写 `低 / 可接受 / 偏高 / 不可接受`
+- `截图`：填写 `前端成功 / 后端兜底成功 / 失败`
+- `录像`：填写 `成功 / 自动恢复后成功 / 失败`
+- `回放`：填写 `成功 / 文件存在但不可播放 / 失败`
+- `最终结论`：填写 `推荐 / 允许降级 / 不建议 / 禁止`
+
+## 三、现场允许清单
+
+- 允许直放 `H.265` 的浏览器/终端：
+- 必须改回 `H.264` 的浏览器/终端：
+- 必须强制降级 `HLS` 的浏览器/终端：
+- 可接受的默认方案：
+
+## 四、需要回写的结论
+
+- 默认子码流编码最终建议：
+- 默认主码流编码最终建议：
+- 默认浏览器最终建议：
+- 是否允许现场继续保留 `H.265`：
+- 是否需要把某些浏览器列入固定禁用清单：
+- 需要更新的 `todo.md` 项：
+- 需要更新的 README：

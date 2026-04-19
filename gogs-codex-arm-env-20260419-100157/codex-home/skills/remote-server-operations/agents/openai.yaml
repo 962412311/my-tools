@@ -1,0 +1,8 @@
+interface:
+  display_name: "Remote Server Ops"
+  short_description: "阶段化 SSH 服务器运维与交付流程"
+  brand_color: "#2563EB"
+  default_prompt: "Use $remote-server-operations to run this repository's SSH server task with the correct local docs, scripts, and protected-workload rules."
+
+policy:
+  allow_implicit_invocation: true

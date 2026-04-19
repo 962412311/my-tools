@@ -1,0 +1,8 @@
+interface:
+  display_name: "Server Delivery Ops"
+  short_description: "通用 Linux 服务器交付与回滚流程"
+  brand_color: "#0F766E"
+  default_prompt: "Use $server-delivery-operations to run this Linux SSH delivery task with staged preflight, deploy, verify, and rollback safety."
+
+policy:
+  allow_implicit_invocation: true
