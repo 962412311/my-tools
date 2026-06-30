@@ -6,6 +6,10 @@ fi
 
 codex_local_bin="$HOME/.local/bin"
 codex_npm_bin="$HOME/.codex/npm-global/bin"
+CODEX_DEFAULT_MODEL="${CODEX_DEFAULT_MODEL:-gpt-5.5}"
+CODEX_DEFAULT_REASONING_EFFORT="${CODEX_DEFAULT_REASONING_EFFORT:-medium}"
+export CODEX_DEFAULT_MODEL CODEX_DEFAULT_REASONING_EFFORT
+
 get_codex_target_triple() {
   local os_name
   local machine

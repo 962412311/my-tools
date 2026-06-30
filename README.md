@@ -52,6 +52,14 @@ scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz
 - 加入 `$HOME/.local/bin`
 - 加入 `$HOME/.codex/npm-global/bin`
 - 根据当前平台选择 `@openai/codex-*` optional package 的 vendor path
+- 设置默认启动模型为 `gpt-5.5`
+- 设置默认推理强度为 `medium`
+
+默认模型可通过环境变量覆盖：
+
+```bash
+CODEX_DEFAULT_MODEL=gpt-5.5 CODEX_DEFAULT_REASONING_EFFORT=medium codex
+```
 
 部署后它会覆盖目标 `$HOME/.codex/path.sh`。如果只想更新启动脚本，可以只复制这个文件：
 
