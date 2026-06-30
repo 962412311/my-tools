@@ -97,13 +97,3 @@ unset IFS
 
 PATH="$path_entries"
 export PATH
-
-# Prefer the stable apply_patch wrapper, while still allowing direct calls
-# to the session-local shim when it exists.
-apply_patch() {
-  "$HOME/.local/bin/apply_patch" "$@"
-}
-
-applypatch() {
-  apply_patch "$@"
-}

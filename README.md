@@ -12,30 +12,37 @@
 - `scripts/codex-agent-tree/deploy.sh`：白名单覆盖部署到目标 `.codex`
 - `dist/codex-global-agent-tree.tar.gz`：当前已生成的部署包
 
-## 使用
+## 完整部署
 
-生成部署包：
+1. 克隆仓库：
+
+```bash
+git clone https://github.com/962412311/my-tools.git
+cd my-tools
+```
+
+2. 生成部署包：
 
 ```bash
 scripts/codex-agent-tree/package.sh
 ```
 
-部署到当前用户：
+3. 部署到当前用户：
 
 ```bash
 scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz
 ```
 
-部署到指定目录：
+4. 如需部署到指定目录：
 
 ```bash
 scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz --target /path/to/.codex
 ```
 
-扔给 Codex 的一句话：
+## 一句话给 Codex
 
 ```text
-请在这个仓库中运行 scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz，完整部署 Codex 启动脚本 path.sh 和 AGENTS.md 引用的全局 Agent 结构树，并验证目标 $HOME/.codex 的白名单文件树与 codex-home/ 一致。
+请基于 https://github.com/962412311/my-tools.git，严格按照该 git 仓库的 README 完整部署 Codex 启动脚本和全局 Agent 结构树。
 ```
 
 ## Codex 启动脚本
@@ -45,7 +52,6 @@ scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz
 - 加入 `$HOME/.local/bin`
 - 加入 `$HOME/.codex/npm-global/bin`
 - 根据当前平台选择 `@openai/codex-*` optional package 的 vendor path
-- 提供稳定的 `apply_patch` / `applypatch` wrapper
 
 部署后它会覆盖目标 `$HOME/.codex/path.sh`。如果只想更新启动脚本，可以只复制这个文件：
 
