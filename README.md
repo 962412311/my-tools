@@ -52,15 +52,15 @@ scripts/codex-agent-tree/deploy.sh --archive dist/codex-global-agent-tree.tar.gz
 - 加入 `$HOME/.local/bin`
 - 加入 `$HOME/.codex/npm-global/bin`
 - 根据当前平台选择 `@openai/codex-*` optional package 的 vendor path
-- 设置默认启动模型为 `gpt-5.5`
-- 设置默认推理强度为 `medium`
+- 设置默认启动模型为 `gpt-5.6-sol`
+- 设置默认推理强度为 `high`
 - 设置启动前远端检查重试次数为 `3`
 - 设置登录 token 剩余 24 小时以内才主动刷新
 
 默认模型可通过环境变量覆盖：
 
 ```bash
-CODEX_DEFAULT_MODEL=gpt-5.5 CODEX_DEFAULT_REASONING_EFFORT=medium codex
+CODEX_DEFAULT_MODEL=gpt-5.6-sol CODEX_DEFAULT_REASONING_EFFORT=high codex
 ```
 
 启动前网络检查参数也可通过环境变量覆盖：
