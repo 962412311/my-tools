@@ -112,6 +112,13 @@ cp codex-home/path.sh "$HOME/.codex/path.sh"
 - `plugins/`
 - `log/`
 
-## macOS
+## macOS 与 WSL/Linux
 
-打包和部署脚本兼容 macOS 默认工具链：`/bin/sh`、BSD `tar`、BSD `mktemp`、系统 `rsync`、`shasum`。启动 wrapper 使用 Bash。打包和解包时使用 `COPYFILE_DISABLE=1`，避免 AppleDouble 元数据进入归档。
+同一套归档和启动 wrapper 支持 macOS 与 WSL/Linux：
+
+- macOS 使用 `dscl` 解析用户 HOME，并兼容系统 `/bin/sh`、BSD `tar`、BSD `mktemp`、系统 `rsync` 和 `shasum`
+- WSL/Linux 使用 `getent passwd` 解析用户 HOME，并支持 Linux x86_64 / arm64 Codex optional package 路径
+- `codex-home/path.sh` 可被 zsh 或 Bash source，不切换调用方 shell 的解析模式
+- `codex-launcher/codex` 使用 Bash；平台专用的可选功能缺失时会跳过，不阻断 Codex 启动
+
+打包和解包时使用 `COPYFILE_DISABLE=1`，避免 macOS AppleDouble 元数据进入归档。

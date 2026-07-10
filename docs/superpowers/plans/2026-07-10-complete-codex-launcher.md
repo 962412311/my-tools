@@ -306,3 +306,30 @@ git status --short --branch
 ```
 
 Expected: remote `main`, local `HEAD`, and `origin/main` resolve to the same commit and the worktree is clean.
+
+### Task 4: Harden the imported launcher for macOS and WSL/Linux
+
+**Files:**
+- Modify: `codex-launcher/codex`
+- Modify: `codex-home/path.sh`
+- Modify: `README.md`
+- Modify: `AGENTS.md`
+- Modify: `docs/superpowers/specs/2026-07-10-complete-codex-launcher-design.md`
+
+- [x] **Step 1: Keep one launcher with platform-specific HOME lookup**
+
+Use `getent passwd` on WSL/Linux, `dscl` on macOS, and `$HOME` as the final
+fallback. Do not maintain separate launcher copies per platform.
+
+- [x] **Step 2: Preserve macOS Bash 3.2 and zsh compatibility**
+
+Avoid expanding an empty Bash array under `set -u`. Keep `path.sh` sourceable
+from zsh without changing the caller's shell emulation mode, so nvm completion
+continues to initialize normally.
+
+- [x] **Step 3: Verify both platform branches**
+
+Run the real launcher from a fresh macOS login shell and assert that it resolves
+to `$HOME/.local/bin/codex`, reports the subscription/update status, and starts
+the CLI without completion errors. Exercise the WSL/Linux HOME lookup with a
+controlled `getent` fixture and confirm the same launcher reaches the real CLI.

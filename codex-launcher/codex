@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+lookup_user_home() {
+  local target_user="$1"
+  local target_home=""
+
+  if command -v getent >/dev/null 2>&1; then
+    target_home="$(getent passwd "$target_user" 2>/dev/null | awk -F: 'NR==1 { print $6 }' || true)"
+  elif command -v dscl >/dev/null 2>&1; then
+    target_home="$(dscl . -read "/Users/$target_user" NFSHomeDirectory 2>/dev/null | awk 'NR==1 { print $2 }' || true)"
+  fi
+
+  printf '%s\n' "$target_home"
+}
+
 resolve_codex_home() {
   local target_user target_home
 
@@ -9,7 +22,7 @@ resolve_codex_home() {
     target_user="$(id -un)"
   fi
 
-  target_home="$(getent passwd "$target_user" 2>/dev/null | awk -F: 'NR==1 { print $6 }')"
+  target_home="$(lookup_user_home "$target_user")"
   if [ -z "$target_home" ]; then
     target_home="${HOME:-/root}"
   fi
@@ -29,7 +42,7 @@ ensure_root_home() {
     target_user="$(id -un)"
   fi
 
-  target_home="$(getent passwd "$target_user" 2>/dev/null | awk -F: 'NR==1 { print $6 }')"
+  target_home="$(lookup_user_home "$target_user")"
   if [ -z "$target_home" ]; then
     target_home="${HOME:-/root}"
   fi
@@ -1249,7 +1262,11 @@ run_real_codex() {
     fi
   fi
 
-  "$real_codex" "${defaults[@]}" "$@"
+  if [ "${#defaults[@]}" -gt 0 ]; then
+    "$real_codex" "${defaults[@]}" "$@"
+  else
+    "$real_codex" "$@"
+  fi
 }
 
 run_codex() {

@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-if [ -n "${ZSH_VERSION:-}" ]; then
-  emulate -L sh
-fi
-
 codex_local_bin="$HOME/.local/bin"
 codex_npm_bin="$HOME/.codex/npm-global/bin"
 case "${CODEX_DEFAULT_MODEL:-}" in

@@ -92,10 +92,11 @@ COPYFILE_DISABLE=1 tar \
   -C "$source_dir" . \
   -C "$tmp_dir" codex-launcher/codex
 
+archive_name=${archive##*/}
 if command -v shasum >/dev/null 2>&1; then
-  shasum -a 256 "$archive" > "$checksum"
+  (CDPATH= cd -- "$output_dir" && shasum -a 256 "$archive_name") > "$checksum"
 elif command -v sha256sum >/dev/null 2>&1; then
-  sha256sum "$archive" > "$checksum"
+  (CDPATH= cd -- "$output_dir" && sha256sum "$archive_name") > "$checksum"
 else
   printf 'WARN: no sha256 tool found; checksum skipped\n' >&2
   rm -f "$checksum"

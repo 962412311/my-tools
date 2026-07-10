@@ -46,9 +46,10 @@ deployment:
 - Existing runtime files under `$HOME/.codex` remain untouched.
 - The final output reports both the `.codex` destination and launcher path.
 
-The wrapper requires Bash, while packaging and deployment scripts remain
-compatible with macOS `/bin/sh`, BSD `tar`, BSD `mktemp`, system `rsync`, and
-`shasum`.
+The wrapper requires Bash and supports both macOS and WSL/Linux. User-home
+lookup uses `dscl` on macOS and `getent passwd` on WSL/Linux, with `$HOME` as
+the final fallback. Packaging and deployment scripts remain compatible with
+macOS `/bin/sh`, BSD `tar`, BSD `mktemp`, system `rsync`, and `shasum`.
 
 ## Documentation
 
@@ -66,8 +67,9 @@ the wrapper as an overwritten file.
 
 The change is accepted only when all of the following pass:
 
-1. `codex-launcher/codex` is byte-for-byte identical to the verified live
-   wrapper before repository edits.
+1. The initial imported `codex-launcher/codex` is byte-for-byte identical to
+   the verified live wrapper; subsequent platform fixes remain surgical and
+   independently verified on macOS and the WSL/Linux HOME-resolution branch.
 2. `bash -n codex-launcher/codex` and `sh -n` on both helper scripts succeed.
 3. Packaging succeeds, the checksum validates, and the archive contains the
    wrapper with executable permissions.
@@ -78,12 +80,15 @@ The change is accepted only when all of the following pass:
    `gpt-5.6-sol` / `high` default injection path.
 7. `git diff --check` succeeds and only the launcher, packaging, deployment,
    documentation, design, plan, and generated distribution files change.
+8. A fresh macOS login shell resolves `$HOME/.local/bin/codex` without zsh
+   completion errors, and a controlled `getent` fixture exercises the
+   WSL/Linux HOME-resolution branch.
 
 ## Scope Boundaries
 
 - Do not archive credentials or mutable Codex runtime state.
-- Do not refactor the 1278-line wrapper while importing it; preserving the
-  currently verified behavior is the purpose of this change.
+- Do not broadly refactor the imported wrapper; only minimal, verified
+  cross-platform compatibility fixes are allowed.
 - Do not change the real Codex npm installation under
   `$HOME/.codex/npm-global`.
 - Do not change the current live wrapper during temporary deployment tests.
